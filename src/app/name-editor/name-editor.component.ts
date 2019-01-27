@@ -11,6 +11,7 @@ import { CardResponseObject } from '../CardResponseObject';
 export class NameEditorComponent implements OnInit {
   @Input()
   cc: CardResponseObject;
+  currentDateTime: Date;
 
   constructor(
     private luhnService: LuhnService
@@ -24,6 +25,7 @@ export class NameEditorComponent implements OnInit {
     this.luhnService.getRandomCard().subscribe(
       data => {
         this.cc = data;
+        this.currentDateTime = new Date();
       }
     );
   }
