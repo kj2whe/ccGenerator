@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LuhnService } from './LuhnService';
+import { LuhnService } from './luhn.service';
 
 describe('LuhnService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

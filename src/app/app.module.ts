@@ -4,11 +4,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { NameEditorComponent } from './name-editor/name-editor.component';
+
+import { ChooseFormatComponent } from './Components/choose-format/choose-format.component';
+import { DisplayResultComponent } from './Components/display-result/display-result.component';
 
 @NgModule({
   declarations: [
-    NameEditorComponent
+    ChooseFormatComponent,
+    DisplayResultComponent,
   ],
   imports: [
     BrowserModule,
@@ -18,7 +21,8 @@ import { NameEditorComponent } from './name-editor/name-editor.component';
   ],
   providers: [],
   bootstrap: [
-    NameEditorComponent
+    ChooseFormatComponent,
+    DisplayResultComponent,
   ]
 })
 export class AppModule { }

@@ -1,0 +1,50 @@
+<div *ngIf="cc">
+  <div class="d-flex justify-content-center">
+    <div class="p-2 bd-highlight">
+      CardNumber:
+    </div>
+    <div class="p-2 bd-highlight">
+      {{ cc?.CardNumber }}
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="p-2 bd-highlight">
+      CardDisplayFormat:
+    </div>
+    <div class="p-2 bd-highlight">
+      {{ cc?.CardDisplayFormat }}
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="p-2 bd-highlight">
+      CardIID:
+    </div>
+    <div class="p-2 bd-highlight">
+      {{ cc?.CardIID }}
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="p-2 bd-highlight">
+      CardIssuer:
+    </div>
+    <div class="p-2 bd-highlight">
+      {{ cc?.CardIssuer }}
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="p-2 bd-highlight">
+      CardLength:
+    </div>
+    <div class="p-2 bd-highlight">
+      {{ cc?.CardLength }}
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="p-2 bd-highlight">
+      Date Time:
+    </div>
+    <div class="p-2 bd-highlight">
+      {{ currentDateTime | date: "mediumDate" }}
+    </div>
+  </div>
+</div>

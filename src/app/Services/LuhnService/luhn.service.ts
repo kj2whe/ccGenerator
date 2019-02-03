@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { CardResponseObject } from '../CardResponseObject';
+import { CardResponseObject } from '../../Models/CardResponseObject';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,6 +16,7 @@ const httpOptions = {
 export class LuhnService {
 
   private luhnAPIUrl = 'https://luhnapi.azurewebsites.net/api/luhn/GenerateNumber';  // URL to web api
+  // private luhnAPIUrl = 'https://localhost:5001/api/';  // URL to web api
   private cro: CardResponseObject;
 
   constructor(
@@ -27,7 +28,17 @@ export class LuhnService {
 
       console.log(`luhnAPIUrl: ${this.luhnAPIUrl}`);
 
-      return this.http.get<CardResponseObject>(this.luhnAPIUrl)
+      return this.http.get<CardResponseObject>(this.luhnAPIUrl + 'luhn/GenerateNumber')
+       .pipe(
+          map(cc => this.cro = cc),
+        );
+    }
+
+    getCardWithSpecificFormat (): Observable<CardResponseObject> {
+
+      console.log(`luhnAPIUrl: ${this.luhnAPIUrl}`);
+
+      return this.http.get<CardResponseObject>(this.luhnAPIUrl + 'luhn/GenerateNumber')
        .pipe(
           map(cc => this.cro = cc),
         );

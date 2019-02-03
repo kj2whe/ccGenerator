@@ -1,0 +1,11 @@
+<div class="container" [formGroup]="selectionForm">
+  <div class="row">
+    <select
+      class="form-control"
+      id="ccSelection"
+      formControlName="ccSelection"
+    >
+    <option *ngFor="let c of fto" [ngValue]="c.abbr">{{ c.Issuer }}</option>
+    </select>
+  </div>
+</div>

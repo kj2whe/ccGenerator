@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NameEditorComponent } from './name-editor.component';
+import { ChooseFormatComponent } from './choose-format.component';
 
-describe('NameEditorComponent', () => {
-  let component: NameEditorComponent;
-  let fixture: ComponentFixture<NameEditorComponent>;
+describe('ChooseFormatComponent', () => {
+  let component: ChooseFormatComponent;
+  let fixture: ComponentFixture<ChooseFormatComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NameEditorComponent ]
+      declarations: [ ChooseFormatComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NameEditorComponent);
+    fixture = TestBed.createComponent(ChooseFormatComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
