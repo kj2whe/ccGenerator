@@ -21,7 +21,6 @@ import { DisplayResultComponent } from './Components/display-result/display-resu
   ],
   providers: [],
   bootstrap: [
-    ChooseFormatComponent,
     DisplayResultComponent,
   ]
 })

@@ -26,19 +26,25 @@ export class LuhnService {
   ) { }
 
     /** GET heroes from the server */
-    getRandomCard (): Observable<CardResponseObject> {
+    getRandomCard (creditCardFormatChosen: string, rangeChosen: string, lengthChosen: string): Observable<CardResponseObject> {
 
-      console.log(`luhnAPIUrl: ${this.luhnAPIUrl}`);
+      let apiUrl = `${this.luhnAPIUrl}luhn/GenerateNumber`;
 
-      return this.http.get<CardResponseObject>(this.luhnAPIUrl + 'luhn/GenerateNumber')
+      if (creditCardFormatChosen != null && lengthChosen != null && rangeChosen != null){
+        apiUrl += `/${creditCardFormatChosen}/${lengthChosen}/${rangeChosen}`;
+      } else if (creditCardFormatChosen != null && lengthChosen != null){
+        apiUrl += `/${creditCardFormatChosen}/${lengthChosen}`;
+      } else if (creditCardFormatChosen != null){
+        apiUrl += `/${creditCardFormatChosen}`;
+      }
+
+      return this.http.get<CardResponseObject>(apiUrl)
        .pipe(
           map(cc => this.cro = cc),
         );
     }
 
     getCardWithSpecificFormat (): Observable<CardResponseObject> {
-
-      console.log(`luhnAPIUrl: ${this.luhnAPIUrl}`);
 
       return this.http.get<CardResponseObject>(this.luhnAPIUrl + 'luhn/GenerateNumber')
        .pipe(

@@ -49,7 +49,7 @@ export class FormatService {
   getAllFormats (): FormatTypeObject[] {
     const objects: FormatTypeObject[] = this.ftoJSON;
 
-    console.log(`ftoJSON: ${this.ftoJSON}`);
+    // console.log(`ftoJSON: ${this.ftoJSON}`);
 
     // return this.http.get<FormatTypeObject>(this.luhnAPIUrl + 'luhn/GenerateNumber')
     //  .pipe(

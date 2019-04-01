@@ -1,3 +1,54 @@
+<div class="container" [formGroup]="selectionForm" aria-colspan="6">
+  <div class="row" aria-colspan="6">
+    <select
+      class="form-control"
+      id="ccSelection"
+      formControlName="ccSelection"
+      (change)="onChange($event)"
+    >
+      <option #myOption *ngFor="let c of fto" value="{{ c.abbr }}">{{
+        c.Issuer
+      }}</option>
+    </select>
+  </div>
+  <div *ngIf="this.iinRange">
+    What do you want to begin your Credit Card number with?
+
+    <div class="row" *ngFor="let item of this.iinRange">
+      <div>
+        <input
+          type="radio"
+          name="selected_iinRange"
+          value="{{ item }}"
+          [checked]="this.iinRange.length === 1 ? true : null"
+          (click)="iinRangeChosen($event)"
+        />
+        {{ item }}
+      </div>
+    </div>
+  </div>
+  <div *ngIf="this.lengthOfDigits">
+    How many digits do you want to Credit Card number to be?
+
+    <div class="row" *ngFor="let item of this.lengthOfDigits">
+      <div>
+        <input
+          type="radio"
+          name="lengthOfDigits"
+          value="{{ item }}"
+          [checked]="this.lengthOfDigits.length === 1 ? true : null"
+          (click)="lengthChooser($event)"
+        />
+        {{ item }}
+      </div>
+    </div>
+  </div>
+  <div></div>
+  <div>
+    <input type="button" (click)="generateNumber($event)" value="Generate Number">
+  </div>
+</div>
+
 <div *ngIf="cc">
   <div class="d-flex justify-content-center">
     <div class="p-2 bd-highlight">
@@ -48,11 +99,11 @@
     </div>
   </div>
   <div class="d-flex justify-content-center">
-      <div class="p-2 bd-highlight">
-        Version:
-      </div>
-      <div class="p-2 bd-highlight">
-        {{ cc?.Version }}
-      </div>
+    <div class="p-2 bd-highlight">
+      Version:
     </div>
+    <div class="p-2 bd-highlight">
+      {{ cc?.Version }}
+    </div>
+  </div>
 </div>
