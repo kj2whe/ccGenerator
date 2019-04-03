@@ -15,7 +15,7 @@ import { FormatTypeObject } from '../../Models/FormatTypeObject';
 })
 export class DisplayResultComponent implements OnInit {
   cc: CardResponseObject;
-  currentDateTime: Date;
+  // currentDateTime: Date;
   fto: FormatTypeObject[];
   selectionForm: FormGroup;
   abbr: string;
@@ -51,7 +51,9 @@ export class DisplayResultComponent implements OnInit {
     .subscribe(
       data => {
         this.cc = data;
-        this.currentDateTime = new Date();
+        // this.currentDateTime = new Date();
+
+        this.cc.CardNumberFormatted = data.CardNumber.replace(/\s+/g, '').replace(/(\d\d\d\d)/g, '$1 ').trim();
       }
     );
   }
@@ -64,6 +66,12 @@ export class DisplayResultComponent implements OnInit {
   //     }
   //   );
   // }
+
+  copyText(inputElement){
+    inputElement.select();
+    document.execCommand('copy');
+    inputElement.setSelectionRange(0, 0);
+    }
 
   getAllFormats(): void {
     this.fto = this.formatService.getAllFormats();
