@@ -55,12 +55,13 @@ export class ChooseFormatComponent implements OnInit {
      this.lengthOfDigits = t.LengthOfDigits;
   }
 
-  iinRangeChosen(rangeChosen: any): void{
+  iinRangeChosen(rangeChosen: any): void {
     this.rangeChosen = rangeChosen.target.value;
   }
 
-  lengthChooser(lengthChosen: any): void{
+  lengthChooser(lengthChosen: any): void {
     this.lengthChosen = lengthChosen.target.value;
+
   }
 
 }

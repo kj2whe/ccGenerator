@@ -28,6 +28,7 @@ export class DisplayResultComponent implements OnInit {
   creditCardFormatChosen: string;
   rangeChosen: string;
   lengthChosen: string;
+  ccButtonDisabled: boolean;
 
 
   constructor(
@@ -37,6 +38,7 @@ export class DisplayResultComponent implements OnInit {
     this.selectionForm = new FormGroup({
       ccSelection: new FormControl(null)
   });
+    this.ccButtonDisabled = true;
   }
 
   ngOnInit() {
@@ -45,27 +47,18 @@ export class DisplayResultComponent implements OnInit {
   }
 
   generateNumber(event: any): void {
-
+    this.ccButtonDisabled = true;
     this.luhnService
     .getRandomCard(this.creditCardFormatChosen, this.rangeChosen, this.lengthChosen)
     .subscribe(
       data => {
         this.cc = data;
         // this.currentDateTime = new Date();
-
         this.cc.CardNumberFormatted = data.CardNumber.replace(/\s+/g, '').replace(/(\d\d\d\d)/g, '$1 ').trim();
+        this.ccButtonDisabled = false;
       }
     );
   }
-
-  // generateSpecificFormatAndLengthNumber(): void {
-  //   this.luhnService.getRandomCard().subscribe(
-  //     data => {
-  //       this.cc = data;
-  //       this.currentDateTime = new Date();
-  //     }
-  //   );
-  // }
 
   copyText(inputElement){
     inputElement.select();
@@ -80,6 +73,7 @@ export class DisplayResultComponent implements OnInit {
   onChange(FormatChosen: any): void {
     this.rangeChosen = undefined;
     this.lengthChosen = undefined;
+    this.ccButtonDisabled = true;
 
     const t = this.fto.find(x => x.abbr === FormatChosen.target.value);
 
@@ -101,12 +95,16 @@ export class DisplayResultComponent implements OnInit {
      }
   }
 
-  iinRangeChosen(rangeChosen: any): void{
+  iinRangeChosen(rangeChosen: any): void {
     this.rangeChosen = rangeChosen.target.value;
+
+    this.ccButtonDisabled =  (this.lengthChosen ? false : true);
   }
 
-  lengthChooser(lengthChosen: any): void{
+  lengthChooser(lengthChosen: any): void {
     this.lengthChosen = lengthChosen.target.value;
+
+    this.ccButtonDisabled =  (this.rangeChosen ? false : true);
   }
 
 
