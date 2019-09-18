@@ -58,7 +58,9 @@
     <div class="d-flex justify-content-center">
       <h1 class="p-2 bd-highlight" #userinput>
         Card Number: {{ cc?.CardNumberFormatted}}
-        <!-- <input type="button" class="fas fa-paste" (click)="copyText(userinput)" /> -->
+        <input type="button" id="copyButton"
+        formControlName="copyButton" class="btn btn-primary"
+        (click)="copyText()" value="Copy CC Number" />
       </h1>
     </div>
     <!-- <div class="d-flex justify-content-center">

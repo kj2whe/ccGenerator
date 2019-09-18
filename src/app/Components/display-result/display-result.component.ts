@@ -43,7 +43,6 @@ export class DisplayResultComponent implements OnInit {
 
   ngOnInit() {
     this.getAllFormats();
-     // this.generateNumber();
   }
 
   generateNumber(event: any): void {
@@ -53,17 +52,24 @@ export class DisplayResultComponent implements OnInit {
     .subscribe(
       data => {
         this.cc = data;
-        // this.currentDateTime = new Date();
         this.cc.CardNumberFormatted = data.CardNumber.replace(/\s+/g, '').replace(/(\d\d\d\d)/g, '$1 ').trim();
         this.ccButtonDisabled = false;
       }
     );
   }
 
-  copyText(inputElement){
-    inputElement.select();
+  copyText(inputElement: any): void {
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = this.cc.CardNumberFormatted.replace(/\s/g, "");
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
     document.execCommand('copy');
-    inputElement.setSelectionRange(0, 0);
+    document.body.removeChild(selBox);
     }
 
   getAllFormats(): void {
