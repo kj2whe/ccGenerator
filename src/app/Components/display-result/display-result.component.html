@@ -44,23 +44,38 @@
     </div>
   </div>
   <div class="text-center">
-    <input
-      class="btn btn-primary"
-      type="button"
-      (click)="generateNumber($event)"
-      value="Generate Number"
-      [disabled]="this.ccButtonDisabled"
-    />
+      <input
+        id="generateNumber"
+        class="btn btn-primary"
+        type="button"
+        (click)="generateNumber($event)"
+        value="Generate Number"
+        [disabled]="this.ccButtonDisabled"
+      />
+      <div class="d-flex justify-content-center">
+      <mat-progress-spinner
+        id="progressSpinner"
+        class="d-none"
+        mode="indeterminate"
+        color="progress"
+        diameter="50"
+      ></mat-progress-spinner>
+    </div>
   </div>
 </div>
 <div class="container" *ngIf="cc">
   <div class="card">
     <div class="d-flex justify-content-center">
       <h1 class="p-2 bd-highlight" #userinput>
-        Card Number: {{ cc?.CardNumberFormatted}}
-        <input type="button" id="copyButton"
-        formControlName="copyButton" class="btn btn-primary"
-        (click)="copyText()" value="Copy CC Number" />
+        Card Number: {{ cc?.CardNumberFormatted }}
+        <input
+          type="button"
+          id="copyButton"
+          formControlName="copyButton"
+          class="btn btn-primary"
+          (click)="copyText()"
+          value="Copy CC Number"
+        />
       </h1>
     </div>
     <!-- <div class="d-flex justify-content-center">
