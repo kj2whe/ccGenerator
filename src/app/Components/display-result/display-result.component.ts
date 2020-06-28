@@ -47,6 +47,8 @@ export class DisplayResultComponent implements OnInit {
 
   generateNumber(event: any): void {
     this.ccButtonDisabled = true;
+    document.getElementById('generateNumber').classList.add('d-none');
+    document.getElementById('progressSpinner').classList.remove('d-none');
     this.luhnService
     .getRandomCard(this.creditCardFormatChosen, this.rangeChosen, this.lengthChosen)
     .subscribe(
@@ -54,17 +56,19 @@ export class DisplayResultComponent implements OnInit {
         this.cc = data;
         this.cc.CardNumberFormatted = data.CardNumber.replace(/\s+/g, '').replace(/(\d\d\d\d)/g, '$1 ').trim();
         this.ccButtonDisabled = false;
+        document.getElementById('generateNumber').classList.remove('d-none');
+        document.getElementById('progressSpinner').classList.add('d-none');
       }
     );
   }
 
   copyText(inputElement: any): void {
-    let selBox = document.createElement('textarea');
+    const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';
     selBox.style.top = '0';
     selBox.style.opacity = '0';
-    selBox.value = this.cc.CardNumberFormatted.replace(/\s/g, "");
+    selBox.value = this.cc.CardNumberFormatted.replace(/\s/g, '');
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();

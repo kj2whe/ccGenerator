@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { ChooseFormatComponent } from './Components/choose-format/choose-format.component';
 import { DisplayResultComponent } from './Components/display-result/display-result.component';
@@ -17,7 +18,8 @@ import { DisplayResultComponent } from './Components/display-result/display-resu
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [
