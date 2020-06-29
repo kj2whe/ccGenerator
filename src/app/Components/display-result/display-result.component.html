@@ -11,6 +11,17 @@
       }}</option>
     </select>
   </div>
+  <div class="card text-white bg-info mb-3" *ngIf="this.isIINMetaRangeChoiceAvailable">
+    <h5 class="card-header">
+      <input
+        type="radio"
+        name="selected_iinRange"
+        value="AAA"
+        (click)="iinMetaRangeChosen($event)"
+      />
+      {{ iinMetaRangeText }}
+    </h5>
+  </div>
   <div class="card text-white bg-info mb-3" *ngIf="this.iinRange">
     <h5 class="card-header">
       What do you want to begin your Credit Card number with?
@@ -44,15 +55,15 @@
     </div>
   </div>
   <div class="text-center">
-      <input
-        id="generateNumber"
-        class="btn btn-primary"
-        type="button"
-        (click)="generateNumber($event)"
-        value="Generate Number"
-        [disabled]="this.ccButtonDisabled"
-      />
-      <div class="d-flex justify-content-center">
+    <input
+      id="generateNumber"
+      class="btn btn-primary"
+      type="button"
+      (click)="generateNumber($event)"
+      value="Generate Number"
+      [disabled]="this.ccButtonDisabled"
+    />
+    <div class="d-flex justify-content-center">
       <mat-progress-spinner
         id="progressSpinner"
         class="d-none"
