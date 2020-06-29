@@ -50,19 +50,21 @@ export class DisplayResultComponent implements OnInit {
 
   generateNumber(event: any): void {
 
-    let tt;
+    let startofCC;
 
-    if (this.rangeChosen === undefined && document.querySelector('input[name="selected_iinRange"]:checked').value === 'AAA') {
-      tt = (Math.floor(Math.random() * (this.iinMetaRangeEnd - this.iinMetaRangeStart + 1)) + this.iinMetaRangeStart).toString();
+    const inputFields = document.querySelector('input[name="selected_iinRange"]:checked') as HTMLInputElement;
+
+    if (this.rangeChosen === undefined && inputFields.value === 'AAA') {
+      startofCC = (Math.floor(Math.random() * (this.iinMetaRangeEnd - this.iinMetaRangeStart + 1)) + this.iinMetaRangeStart).toString();
     } else {
-      tt = this.rangeChosen;
+      startofCC = this.rangeChosen;
     }
 
     this.ccButtonDisabled = true;
     document.getElementById('generateNumber').classList.add('d-none');
     document.getElementById('progressSpinner').classList.remove('d-none');
     this.luhnService
-    .getRandomCard(this.creditCardFormatChosen, tt, this.lengthChosen)
+    .getRandomCard(this.creditCardFormatChosen, startofCC, this.lengthChosen)
     .subscribe(
       data => {
         this.cc = data;
