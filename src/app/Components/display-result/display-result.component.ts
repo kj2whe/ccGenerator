@@ -72,6 +72,7 @@ export class DisplayResultComponent implements OnInit {
         this.ccButtonDisabled = false;
         document.getElementById('generateNumber').classList.remove('d-none');
         document.getElementById('progressSpinner').classList.add('d-none');
+        this.rangeChosen = undefined;
       }
     );
   }
@@ -115,6 +116,8 @@ export class DisplayResultComponent implements OnInit {
       // tslint:disable-next-line: max-line-length
       this.iinMetaRangeText = 'Do you want to begin your Credit Card number between ' + this.iinMetaRangeStart + ' to ' + this.iinMetaRangeEnd + '?';
       this.isIINMetaRangeChoiceAvailable = true;
+      // tslint:disable-next-line: max-line-length
+      this.rangeChosen = (Math.floor(Math.random() * (this.iinMetaRangeEnd - this.iinMetaRangeStart + 1)) + this.iinMetaRangeStart).toString();
      }
 
      if (t.IINRange.length === 1) {
